@@ -11,7 +11,7 @@ class Home extends Component {
   state = {friends: [] }
 
   componentDidMount() {
-    axios.get('api/posts')
+    axios.get('/api/posts')
     .then(res => {
       this.props.dispatch(setHeaders(res.headers))
       this.setState({friends: res.data})
@@ -19,25 +19,28 @@ class Home extends Component {
   }
 
 
+  showFriends = () => {
+    return this.state.friends.map( f => {
+      return(
+        <Card 
+          key={f.id}
+        >
+          <h2>{f.name}</h2>
+          <Image src={f.image} />
+          {/* <h3>{f.email}</h3> */}
+        </Card>
+      )
+    })
+  }
+
 
   render() {
     return (
       <div>
         <Card className="cards-root">
-          { this.state.friends.map( friends =>
-            <Card 
-              key={friends.id}
-              // onSwipeLeft={() => this.swipeLeft(cat.id) }
-              // onSwipeRight={() => this.swipeRight(cat.id) }
-            >
-                <h2>{friends.title}</h2>
-                <Image src={friends.avatar} />
-                <h3>{friends.body}</h3>
-              </Card>
-            )
-          }
+          {this.showFriends()}
         </Card>
-        <Link to="/my_friend">My Friends</Link>
+        <Link to="/add_friends">My Friends</Link>
       </div>
     );
   }
