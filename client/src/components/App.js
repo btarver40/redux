@@ -23,7 +23,7 @@ class App extends Component {
         <FetchUser>
           <Switch>
             <ProtectedRoute exact path='/' component={Home} />
-            <ProtectedRoute exact path='/my_friend' component={MyFriends} />
+            <ProtectedRoute exact path='/add_friends/:id' component={MyFriends} />
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
             <Route component={NoMatch} />

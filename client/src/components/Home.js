@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Header } from 'semantic-ui-react';
 import axios from 'axios';
-import { Card, Icon, Image } from 'semantic-ui-react'
-// import Cards, { Card } from 'react-swipe-card';
+import { Card, Button, Image } from 'semantic-ui-react'
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {setHeaders} from '../reducers/headers';
